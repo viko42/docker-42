@@ -14,9 +14,8 @@ RUN apt-get update && apt-get upgrade -y \
     && cd teamspeak3-server_linux-amd64
 
 
-ENTRYPOINT ["/home/serveur/teamspeak3-server_linux-amd64/ts3server_startscript.sh"]
-CMD ["start"]
 
+CMD ["/home/serveur/teamspeak3-server_linux-amd64/ts3server_minimal_runscript.sh"]
 
 # Expose the Standard TS3 port, for files, for serverquery
 EXPOSE 9987/udp 30033 10011
