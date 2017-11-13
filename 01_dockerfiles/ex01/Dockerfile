@@ -1,21 +1,21 @@
 FROM debian
 
 
-RUN apt-get update && apt-get upgrade \
+RUN apt-get update && apt-get upgrade -y \
 	&& apt-get install -y wget \
 	&& apt-get install -y procps \
 	&& apt-get install -y sysvinit-utils \
 	&& useradd serveur \
-	&& su serveur \ 
+	&& mkdir -p /home/serveur \
 	&& cd /home/serveur \
-	&& wget http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-amd64-3.0.11.2.tar.gz \
-	&& tar -zxvf teamspeak3-server_linux-amd64-3.0.11.2.tar.gz \
-	&& rm teamspeak3-server_linux-amd64-3.0.11.2.tar.gz \
-	&& cd teamspeak3-server_linux-amd64i 
+    && wget http://dl.4players.de/ts/releases/3.0.11.2/teamspeak3-server_linux-amd64-3.0.11.2.tar.gz \
+    && tar -zxvf teamspeak3-server_linux-amd64-3.0.11.2.tar.gz \
+    && rm teamspeak3-server_linux-amd64-3.0.11.2.tar.gz \
+    && cd teamspeak3-server_linux-amd64
 
-ENTRYPOINT ["/home/serveur/home/serveur/teamspeak3-server_linux-amd64/ts3server_startscript.sh"]
-CMD ["start"]
 
+
+CMD ["/home/serveur/teamspeak3-server_linux-amd64/ts3server_minimal_runscript.sh"]
 
 # Expose the Standard TS3 port, for files, for serverquery
 EXPOSE 9987/udp 30033 10011
