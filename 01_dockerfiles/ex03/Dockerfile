@@ -38,15 +38,16 @@ PASSWD   = 1234\n \
 SSL_MODE = disable\n \
 PATH     = data/gogs.db\n \
 [repository]\n \
-ROOT = /root/gogs-repositories\n \
+ROOT = /home/git/gogs-repositories\n \
 [server]\n \
 DOMAIN           = 192.168.99.100\n \
 HTTP_PORT        = 3000\n \
 ROOT_URL         = http://192.168.99.100:3000/\n \
 DISABLE_SSH      = false\n \
 SSH_PORT         = 22\n \
-START_SSH_SERVER = false\n \
+START_SSH_SERVER = true\n \
 OFFLINE_MODE     = false\n \
+SSH_LISTEN_PORT  = 22\n \
 [mailer]\n \
 ENABLED = false\n \
 [service]\n \
@@ -75,5 +76,9 @@ RUN		echo "service mysql start ; sudo ./gogs web" > launch.sh \
 
 ENTRYPOINT ["/bin/bash", "launch.sh"]
 CMD ["bash"]
+
 EXPOSE 3000
 EXPOSE 22
+
+#to run --> docker run -it --rm --name [youcontainername] -p 3000:3000 -p 2222:22 [image]
+#to ssh --> git git clone ssh://root@192.168.99.100:2222/[user]/[repo].git
