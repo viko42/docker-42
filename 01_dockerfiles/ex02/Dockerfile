@@ -8,4 +8,4 @@ ONBUILD WORKDIR /opt/app
 ONBUILD ADD . /opt/app
 
 ONBUILD EXPOSE 3000
-ONBUILD RUN bundle install && rake db:migrate && rake db:seed
+ONBUILD RUN bundle install && rake db:migrate &&  rake db:seed
